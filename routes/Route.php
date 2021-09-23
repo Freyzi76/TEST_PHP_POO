@@ -54,7 +54,7 @@ class Route {
 
         $method = $params[1];
 
-        return isset($this->matches[1]) ? $controller->$method($this->matches[1]) : $controller->$method();
+        return isset($this->matches[1]) ? $controller->$method($this->matches[1]) : $controller->$method('test');
 
 
     }
