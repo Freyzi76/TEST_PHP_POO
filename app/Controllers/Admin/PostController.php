@@ -20,14 +20,51 @@ class PostController extends Controller {
     }
 
 
-    public function edit(int $id)
+    public function create()
+    {
+
+        $tags = (new Tag($this->getDB()))->all();
+
+        return $this->view('admin.post.form', compact('tags'));
+
+    }
+
+
+    public function createPost()
+    {
+
+
+        $post = new Post($this->getDB());
+
+        $tags = null;
+
+        if(count($_POST) === 3)
+        {
+
+            $tags = array_pop($_POST);
+
+        }
+
+        $result = $post->create($_POST, $tags);
+
+        if ($result) 
+        {
+
+            return header('Location: /admin/posts');
+
+        }
+
+    }
+
+
+    public function form(int $id)
     {
 
         $post = (new Post($this->getDB()))->findById($id);
 
         $tags = (new Tag($this->getDB()))->all();
 
-        return $this->view('admin.post.edit', compact('post', 'tags'));
+        return $this->view('admin.post.form', compact('post', 'tags'));
 
     }
 

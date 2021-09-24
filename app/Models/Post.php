@@ -53,6 +53,29 @@ END;
     }
 
 
+    public function create(array $data, ?array $relation = null)
+    {
+
+        parent::create($data);
+
+        $id = $this->db->getPDO()->lastInsertId();
+
+            if ($relation !== null) {
+
+                foreach ($relation as $tagId)
+                {
+                    $stmt = $this->db->getPDO()->prepare("INSERT post_tag (post_id, tag_id) VALUES (?, ?)");
+
+                    $stmt->execute([$id, $tagId]);
+                }
+
+            }
+
+        return true;
+
+    }
+
+
 
     public function update(int $id, array $data, ?array $relation = null) 
     {
@@ -62,8 +85,6 @@ END;
         $stmt = $this->db->getPDO()->prepare("DELETE FROM post_tag WHERE post_id = ?");
 
         $stmt->execute([$id]);
-
-            var_dump($relation);
 
             if ($relation !== null) {
 

@@ -37,6 +37,34 @@ abstract class Model
 
 
 
+    public function create(array $data, ?array $relation = null)
+    {
+
+        $firstParenthesis = "";
+
+        $secondParenthesis = "";
+
+        $i = 1;
+
+        foreach ($data as $key => $value)
+        {
+
+            $finish = $i === count($data) ? "" : ', ';
+
+            $firstParenthesis .= "{$key}{$finish}";
+
+            $secondParenthesis .= ":{$key}{$finish}";
+
+            $i++;
+
+        }
+
+        return $this->query("INSERT INTO {$this->table} ($firstParenthesis) VALUE ($secondParenthesis)", $data);
+
+    }
+
+
+
 
     public function update(int $id, array $data, ?array $relation = null) 
     {
@@ -48,7 +76,7 @@ abstract class Model
         foreach ($data as $key => $value)
         {
 
-            $finish = $i === count($data) ? " " : ', ';
+            $finish = $i === count($data) ? "" : ', ';
 
             $sqlRequestPart .= "{$key} = :{$key}{$finish}";
 

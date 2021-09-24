@@ -1,3 +1,9 @@
+
+<a href="/admin/posts/create" class="btn btn-success my-3">Crée un article</a>
+
+<br>
+
+
 <table class="table">
   <thead>
     <tr>
@@ -23,7 +29,7 @@
 
       <td>
 
-          <a href="/admin/posts/edit/<?= $post->id ?>" class="btn btn-warning">Modifier</a>
+          <a href="/admin/posts/form/<?= $post->id ?>" class="btn btn-warning">Modifier</a>
 
           <form action="/admin/posts/delete/<?= $post->id ?>" method="post" class="d-inline">
 

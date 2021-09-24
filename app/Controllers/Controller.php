@@ -11,6 +11,14 @@ abstract class Controller {
 
     public function __construct(DBConnection $db)
     {
+
+        if(session_status() === PHP_SESSION_NONE)
+        {
+
+            session_start();
+
+        }
+
         $this->db = $db;
     }
 
@@ -33,6 +41,23 @@ abstract class Controller {
     {
 
         return $this->db;
+
+    }
+
+
+    protected function isAdmin()
+    {
+
+        if(isset($_SESSION['auth']) && $_SESSION['auth'] === 1)
+        {
+
+            return true;
+
+        } else {
+
+            return header('location: /');
+
+        }
 
     }
 

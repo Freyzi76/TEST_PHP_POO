@@ -1,3 +1,5 @@
+<?php echo password_hash('admin', PASSWORD_DEFAULT, ['cost' => 12]); ?>
+
 <h1>Homepage</h1>
 
 
