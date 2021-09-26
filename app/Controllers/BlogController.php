@@ -18,6 +18,8 @@ class BlogController extends Controller {
 
     public function index() {
 
+        $this->isConnected();
+
         $post = new Post($this->getDB());
 
         $posts = $post->all();
@@ -30,6 +32,8 @@ class BlogController extends Controller {
 
     public function show(int $id) {
 
+        $this->isConnected();
+
         $post = new Post($this->getDB());
 
         $post = $post->findById($id);
@@ -40,6 +44,8 @@ class BlogController extends Controller {
 
 
     public function tag(int $id) {
+
+        $this->isConnected();
 
         $tag = new Tag($this->getDB());
 

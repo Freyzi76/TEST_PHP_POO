@@ -1,4 +1,4 @@
-<?php echo password_hash('admin', PASSWORD_DEFAULT, ['cost' => 12]); ?>
+<?php //echo crypt('admin', "$6$12=5000MEGAsecretKEY765325dqz6d2d265ad2kuh11dq9z$"); ?>
 
 <h1>Homepage</h1>
 

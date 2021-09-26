@@ -24,14 +24,14 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="/posts" class="nav-link px-2 text-white">Posts</a></li>
+          <?= isset($_SESSION['id']) ? '<li><a href="/posts" class="nav-link px-2 text-white">Posts</a></li>' : ''; ?>
+          
         </ul>
 
 
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
+          <?= isset($_SESSION['id']) ? '<a href="/logout" class="btn btn-danger me-2">Se Déconnecter</a>' : '<a href="/login" class="btn btn-success me-2">Se Connecter</a> <a href="/Sign" class="btn btn-warning me-2">Crée un compte</a>'; ?>
         </div>
       </div>
     </div>

@@ -25,15 +25,30 @@ class UserController extends Controller {
         if(password_verify($_POST['password'], $user->password)) 
         {
 
-            $_SESSION['auth'] = (int) $user->admin;
+            $_SESSION['username'] = (string) $user->username;
+
+            $_SESSION['id'] = (int) $user->id;
+
+            $_SESSION['admin'] = (int) $user->admin;
+
 
             return header('location: /admin/posts');
 
         } else {
 
-            die('Pas ok');
+            return header('location: /');
 
         }
+
+    }
+
+
+    public function logout()
+    {
+
+        session_destroy();
+
+        return header('location: /');
 
     }
 

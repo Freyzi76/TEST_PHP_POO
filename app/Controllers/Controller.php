@@ -48,7 +48,7 @@ abstract class Controller {
     protected function isAdmin()
     {
 
-        if(isset($_SESSION['auth']) && $_SESSION['auth'] === 1)
+        if(isset($_SESSION['id']) && $_SESSION['admin'] === 1)
         {
 
             return true;
@@ -60,6 +60,24 @@ abstract class Controller {
         }
 
     }
+
+
+    protected function isConnected()
+    {
+
+        if(isset($_SESSION['id'])) 
+        {
+
+            return true;
+
+        } else {
+
+            return header('location: /');
+
+        }
+
+    }
+
 
 
 }

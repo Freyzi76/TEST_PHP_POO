@@ -25,6 +25,8 @@ $router->get('/tags/:id', 'App\Controllers\BlogController@tag');
 $router->get('/login', 'App\Controllers\UserController@login');
 $router->post('/login', 'App\Controllers\UserController@loginPost');
 
+$router->get('/logout', 'App\Controllers\UserController@logout');
+
 
 $router->get('/admin/posts', 'App\Controllers\Admin\PostController@index');
 $router->get('/admin/posts/create', 'App\Controllers\Admin\PostController@create');
@@ -38,9 +40,9 @@ $router->post('/admin/posts/update/:id', 'App\Controllers\Admin\PostController@u
 
 $result = $router->run();
     
-  /*  
+  
     if ($result == null) {
         
         header('Location: ../'); 
     
-    } */
+    } 

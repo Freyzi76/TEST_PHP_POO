@@ -3,6 +3,8 @@
 
 <br>
 
+<?= var_dump($_SESSION); ?>
+
 
 <table class="table">
   <thead>
