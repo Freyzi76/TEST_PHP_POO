@@ -27,16 +27,27 @@ $router->post('/login', 'App\Controllers\UserController@loginPost');
 $router->get('/logout', 'App\Controllers\UserController@logout');
 
 
-$router->get('/admin/article', 'App\Controllers\Admin\ArticleModifyController@index');
-$router->get('/admin/article/create', 'App\Controllers\Admin\ArticleModifyController@create');
+
+$router->get('/admin', 'App\Controllers\Admin\Dashboard@index');
+
+$router->get('/admin/article', 'App\Controllers\Admin\Dashboard@getArticle');
+
+$router->get('/admin/article/create', 'App\Controllers\Admin\Dashboard@createArticle');
+
+$router->get('/admin/tag', 'App\Controllers\Admin\Dashboard@getTag');
+
+
+//$router->get('/admin/article', 'App\Controllers\Admin\ArticleModifyController@index');
+//$router->get('/admin/article/create', 'App\Controllers\Admin\ArticleModifyController@create');
+
 $router->post('/admin/article/create', 'App\Controllers\Admin\ArticleModifyController@createPost');
+
 $router->post('/admin/article/delete/:id', 'App\Controllers\Admin\ArticleModifyController@destroy');
 $router->get('/admin/article/form/:id', 'App\Controllers\Admin\ArticleModifyController@form');
 $router->post('/admin/article/update/:id', 'App\Controllers\Admin\ArticleModifyController@update');
 
 
 
-$router->get('/admin/tag', 'App\Controllers\Admin\TagModifyController@tagIndex');
 
 
 

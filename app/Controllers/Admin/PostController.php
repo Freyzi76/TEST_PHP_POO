@@ -4,22 +4,21 @@
 namespace App\Controllers\Admin;
 
 use App\Models\Tag;
-use App\Models\Article;
+use App\Models\Post;
 use App\Controllers\Controller;
 
 
-class ArticleModifyController extends Controller {
-
+class PostController extends Controller {
 
     public function index()
     {
         $this->isAdmin();
 
-        $post = new Article($this->getDB());
+        $post = new Post($this->getDB());
 
         $posts = $post->all();
 
-        return $this->adminView('admin.article.index', compact('posts'));
+        return $this->view('admin.post.index', compact('posts'));
     }
 
 
@@ -29,7 +28,7 @@ class ArticleModifyController extends Controller {
 
         $tags = (new Tag($this->getDB()))->all();
 
-        return $this->view('admin.article.form', compact('tags'));
+        return $this->view('admin.post.form', compact('tags'));
 
     }
 
@@ -38,7 +37,7 @@ class ArticleModifyController extends Controller {
     {
         $this->isAdmin();
 
-        $post = new Article($this->getDB());
+        $post = new Post($this->getDB());
 
         $tags = null;
 
@@ -54,7 +53,7 @@ class ArticleModifyController extends Controller {
         if ($result) 
         {
 
-            return header('Location: /admin/article');
+            return header('Location: /admin/posts');
 
         }
 
@@ -65,11 +64,11 @@ class ArticleModifyController extends Controller {
     {
         $this->isAdmin();
 
-        $post = (new Article($this->getDB()))->findById($id);
+        $post = (new Post($this->getDB()))->findById($id);
 
         $tags = (new Tag($this->getDB()))->all();
 
-        return $this->view('admin.article.form', compact('post', 'tags'));
+        return $this->view('admin.post.form', compact('post', 'tags'));
 
     }
 
@@ -78,7 +77,7 @@ class ArticleModifyController extends Controller {
     {
         $this->isAdmin();
 
-        $post = new Article($this->getDB());
+        $post = new Post($this->getDB());
 
         $tags = null;
 
@@ -94,7 +93,7 @@ class ArticleModifyController extends Controller {
         if ($result) 
         {
 
-            return header('Location: /admin/article');
+            return header('Location: /admin/posts');
 
         }
 
@@ -105,14 +104,14 @@ class ArticleModifyController extends Controller {
     {
         $this->isAdmin();
 
-        $post = new Article($this->getDB());
+        $post = new Post($this->getDB());
 
         $result = $post->destroy($id);
 
         if ($result) 
         {
 
-            return header('Location: /admin/article');
+            return header('Location: /admin/posts');
 
         }
 
