@@ -17,10 +17,9 @@ $router = new Router($_GET['url']);
 
 
 
-$router->get('/', 'App\Controllers\BlogController@welcome');
-$router->get('/posts', 'App\Controllers\BlogController@index');
-$router->get('/posts/:id', 'App\Controllers\BlogController@show');
-$router->get('/tags/:id', 'App\Controllers\BlogController@tag');
+$router->get('/', 'App\Controllers\ArticleController@index');
+$router->get('/posts/:id', 'App\Controllers\ArticleController@show');
+$router->get('/tags/:id', 'App\Controllers\ArticleController@tag');
 
 $router->get('/login', 'App\Controllers\UserController@login');
 $router->post('/login', 'App\Controllers\UserController@loginPost');
@@ -28,12 +27,16 @@ $router->post('/login', 'App\Controllers\UserController@loginPost');
 $router->get('/logout', 'App\Controllers\UserController@logout');
 
 
-$router->get('/admin/posts', 'App\Controllers\Admin\PostController@index');
-$router->get('/admin/posts/create', 'App\Controllers\Admin\PostController@create');
-$router->post('/admin/posts/create', 'App\Controllers\Admin\PostController@createPost');
-$router->post('/admin/posts/delete/:id', 'App\Controllers\Admin\PostController@destroy');
-$router->get('/admin/posts/form/:id', 'App\Controllers\Admin\PostController@form');
-$router->post('/admin/posts/update/:id', 'App\Controllers\Admin\PostController@update');
+$router->get('/admin/article', 'App\Controllers\Admin\ArticleModifyController@index');
+$router->get('/admin/article/create', 'App\Controllers\Admin\ArticleModifyController@create');
+$router->post('/admin/article/create', 'App\Controllers\Admin\ArticleModifyController@createPost');
+$router->post('/admin/article/delete/:id', 'App\Controllers\Admin\ArticleModifyController@destroy');
+$router->get('/admin/article/form/:id', 'App\Controllers\Admin\ArticleModifyController@form');
+$router->post('/admin/article/update/:id', 'App\Controllers\Admin\ArticleModifyController@update');
+
+
+
+$router->get('/admin/tag', 'App\Controllers\Admin\TagModifyController@tagIndex');
 
 
 

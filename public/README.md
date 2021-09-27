@@ -1,1 +1,0 @@
-TEST_PHP_POO

@@ -32,7 +32,7 @@ class UserController extends Controller {
             $_SESSION['admin'] = (int) $user->admin;
 
 
-            return header('location: /admin/posts');
+            return header('location: /admin/article');
 
         } else {
 
